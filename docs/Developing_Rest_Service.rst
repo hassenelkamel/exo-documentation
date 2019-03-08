@@ -150,15 +150,14 @@ The ``pom.xml`` file now looks like:
 		CacheControl cacheControl = new CacheControl();       cacheControl.setNoCache(true);
 			cacheControl.setNoStore(true);
 
-			if (sc.getUserPrincipal() == null || !this.isMemberOf(sc.getUserPrincipal().getName(), groupToCheck)) {
+			if (sc.getUserPrincipal() == null || !this.isMemberOf(sc.getUserPrincipal().getName(),groupToCheck)) {
 
 			  jsonObject.put("rights","NOT-ALLOWED");
 			  list.put(jsonObject);
 
 			} else {
 
-			  OrganizationService organizationService = (OrganizationService) ExoContainerContext.getCurrentContainer()
-																								 .getComponentInstanceOfType(OrganizationService.class);
+			  OrganizationService organizationService = (OrganizationService)ExoContainerContext.getCurrentContainer().getComponentInstanceOfType(OrganizationService.class);
 			  UserHandler userHandler = organizationService.getUserHandler();
 			  try {
 				ListAccess<User> allUsers = userHandler.findAllUsers();
